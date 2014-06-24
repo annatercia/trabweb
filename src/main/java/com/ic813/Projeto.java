@@ -13,15 +13,14 @@ import org.apache.wicket.markup.html.form.TextField;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
 import org.apache.wicket.markup.html.basic.Label;
 
-
 public class Projeto extends Form{
-	private TextField<String> tituloProjeto;
-	private TextField<String> dataInicio;
-	private TextField<String> dataFim;
+	private TextField tituloProjeto;
+	private TextField dataInicio;
+	private TextField dataFim;
 	private DropDownChoice agencia;
-	private TextField<Float> valorFinanciado;
-	private TextField<String> objetivo;
-	private TextField<String> descricao;
+	private TextField valorFinanciado;
+	private TextField objetivo;
+	private TextField descricao;
 	
 	private List<String> agencias = Arrays.asList("Nenhuma ainda");
 	
@@ -55,8 +54,5 @@ public class Projeto extends Form{
 		add(new Label("objetivo", "Objetivo: "));
 		add(new Label("descricao", "Descrição: "));
 			
-	}
-	public String getTituloProjeto(){
-		return this.tituloProjeto.toString();
 	}
 }
