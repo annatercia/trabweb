@@ -1,6 +1,7 @@
 package com.ic813;
 import java.util.Arrays;
 import java.util.List;
+import DAO.*;
 
 import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.model.Model;
@@ -19,11 +20,11 @@ public class Projeto extends Form{
 	private TextField<String> dataInicio;
 	private TextField<String> dataFim;
 	private DropDownChoice agencia;
-	private TextField<Float> valorFinanciado;
+	private TextField<String> valorFinanciado;
 	private TextField<String> objetivo;
 	private TextField<String> descricao;
-	
-	private List<String> agencias = Arrays.asList("Nenhuma ainda");
+	//private AgenciaDAO a= new AgenciaDAO();
+	private List<String> agencias = Arrays.asList("Selecione uma");
 	
 	public Projeto(String id){
 		super(id);
@@ -57,6 +58,30 @@ public class Projeto extends Form{
 			
 	}
 	public String getTituloProjeto(){
-		return this.tituloProjeto.toString();
+		return this.tituloProjeto.getConvertedInput();
+	}
+	
+	public String getDataInicio(){
+		return this.dataInicio.getConvertedInput();
+	}
+	
+	public String getDataFim(){
+		return this.dataFim.getConvertedInput();
+	}
+	
+	public String getAgencia(){
+		return this.agencia.getValue();
+	}
+	
+	public String getValorFinanciado(){
+		return this.valorFinanciado.getConvertedInput();
+	}
+	
+	public String getObjetivo(){
+		return this.objetivo.getConvertedInput();
+	}
+	
+	public String getDescricao(){
+		return this.descricao.getConvertedInput();
 	}
 }
