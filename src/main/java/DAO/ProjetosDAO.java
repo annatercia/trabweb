@@ -38,7 +38,7 @@ public class ProjetosDAO {
 	public boolean delete(int id){
 		String SQL;
 		
-		SQL = "DELETE FROM PROJETO WHERE id = "+Integer.toString(id);
+		SQL = "DELETE FROM PROJETOS WHERE id = "+Integer.toString(id);
 		
 		Connection conn = new Conn().getConnection();
 		
@@ -56,7 +56,7 @@ public class ProjetosDAO {
 	public ArrayList<Projetos> getAll(){
 		String SQL;
 		
-		SQL = "SELECT * FROM projeto";
+		SQL = "SELECT * FROM projetos";
 		
 		Connection conn = new Conn().getConnection();
 		ArrayList<Projetos> lp = new ArrayList<Projetos>();
@@ -90,7 +90,7 @@ public class ProjetosDAO {
 	public ArrayList<String> getAllNome(){
 		String SQL;
 		
-		SQL = "SELECT nome FROM projetos";
+		SQL = "SELECT titulo FROM projetos";
 		
 		Connection conn = new Conn().getConnection();
 		ArrayList<String> lp = new ArrayList<String>();
@@ -149,7 +149,7 @@ public class ProjetosDAO {
 	public Projetos getByIdl(int id){
 		String SQL;
 		
-		SQL = "SELECT * FROM projeto WHERE id = "+Integer.toString(id);
+		SQL = "SELECT * FROM projetos WHERE id = "+Integer.toString(id);
 		
 		Connection conn = new Conn().getConnection();
 		Projetos p = new Projetos();
@@ -163,7 +163,7 @@ public class ProjetosDAO {
 				p.setTitulo(rs.getString("titulo"));
 				p.setData_inicio(rs.getString("data_inicio"));
 				p.setData_termino(rs.getString("data_termino"));
-				p.setAgencia_id(rs.getInt("agencia"));
+				p.setAgencia_id(rs.getInt("agencia_id"));
 				p.setValor_financiado(rs.getFloat("valor_financiado"));
 				p.setObjetivo(rs.getString("objetivo"));
 				p.setDescricao(rs.getString("descricao"));

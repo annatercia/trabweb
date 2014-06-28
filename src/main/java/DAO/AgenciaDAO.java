@@ -59,7 +59,7 @@ public class AgenciaDAO {
 			Agencia a = new Agencia();
 			while(rs.next()){
 				a.setId(rs.getInt("id"));
-				a.setNome(rs.getString("titulo"));
+				a.setNome(rs.getString("nome"));
 				la.add(a);
 			}
 			
@@ -109,7 +109,7 @@ public class AgenciaDAO {
 			Agencia a = new Agencia();
 			while(rs.next()){
 				a.setId(rs.getInt("id"));
-				a.setNome(rs.getString("titulo"));
+				a.setNome(rs.getString("nome"));
 				la.add(a);
 			}
 			
@@ -125,7 +125,7 @@ public class AgenciaDAO {
 	public Agencia getById(int id){
 		String SQL;
 		
-		SQL = "SELECT * FROM agencia WHERE id = "+Integer.toString(id);
+		SQL = "SELECT * FROM agencias WHERE id = "+Integer.toString(id);
 		
 		Connection conn = new Conn().getConnection();
 		Agencia a = new Agencia();
@@ -136,7 +136,7 @@ public class AgenciaDAO {
 			
 			while(rs.next()){
 				a.setId(rs.getInt("id"));
-				a.setNome(rs.getString("titulo"));
+				a.setNome(rs.getString("nome"));
 			}
 			
 			rs.last();

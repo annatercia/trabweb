@@ -23,17 +23,18 @@
 			</form>
 			
 			<!-- Informações daquele projeto -->
-			<label wicket:id="titulo"></label><br/><span wicket:id="tit" size="40" maxlength="100">-</span><br/>
-			<label wicket:id="dataini"></label><br/><span wicket:id="dtini" size="15" maxlength="15">-</span><br/>
-			<label wicket:id="datafim"></label><br/><span wicket:id="dtfim" size="15" maxlength="15">-</span><br/>
-			<label wicket:id="agencia"></label><br/><span wicket:id="agn" size="15" maxlength="15">-</span><br/>
-			<label wicket:id="valor"></label><br/><span wicket:id="vlr" size="40" maxlength="100" >-</span><br/>
-			<label wicket:id="objetivo"></label><br/><span wicket:id="objt" size="40" maxlength="100">-</span><br/>
-			<label wicket:id="descricao"></label><br/><span wicket:id="desc" size="40" maxlength="100">-</span><br/>
+			<span wicket:id="titulo"></span><br/><span wicket:id="tit" size="40" maxlength="100">-</span><br/>
+			<span wicket:id="dataini"></span><br/><span wicket:id="dtini" size="15" maxlength="15">-</span><br/>
+			<span wicket:id="datafim"></span><br/><span wicket:id="dtfim" size="15" maxlength="15">-</span><br/>
+			<span wicket:id="agencia"></span><br/><span wicket:id="agn" size="15" maxlength="15">-</span><br/>
+			<span wicket:id="valor"></span><br/><span wicket:id="vlr" size="40" maxlength="100" >-</span><br/>
+			<span wicket:id="objetivo"></span><br/><span wicket:id="objt" size="40" maxlength="100">-</span><br/>
+			<span wicket:id="descricao"></span><br/><span wicket:id="desc" size="40" maxlength="100">-</span><br/>
 		
 			
 			<!-- Tabela de colaboradores daquele projeto -->
-			<table>
+			Colaboradores
+			<table border>
 				<tr>
 					<td>Nome</td>
 					<td>Grau</td>
@@ -49,7 +50,7 @@
 			</table>
 			
 			<!-- Formulário de alocação de fulanos -->
-			<form wicked:id="alocar">								
+			<form wicket:id="alocar">								
 				<label wicket:id="colaborador"></label><br/><select wicket:id="col" >
 														<option value="">Escolha um fulano</option>
 														</select><br/>

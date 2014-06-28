@@ -80,6 +80,34 @@ public class ColaboradoresDAO {
 		return lc;
 	}
 	
+	public ArrayList<String> getAllNome(){
+		String SQL;
+		
+		SQL = "SELECT * FROM colaboradores";
+		
+		Connection conn = new Conn().getConnection();
+		ArrayList<String> lc = new ArrayList<String>();
+		lc.add("");
+		
+		try{
+			Statement stmt = conn.createStatement();
+			ResultSet rs = stmt.executeQuery(SQL);
+			
+			while(rs.next()){
+				lc.add(rs.getString("nome"));
+			}
+			
+			rs.last();
+			
+		} catch(SQLException e){
+			System.out.println("Erro no SQL");
+		}
+		
+		return lc;
+	}
+	
+	
+	
 	public ArrayList<Colaboradores> getBy(String SQL){
 		
 		Connection conn = new Conn().getConnection();
