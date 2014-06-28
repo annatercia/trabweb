@@ -9,7 +9,7 @@ public class Conn {
 	public String serverName = "localhost";
 	public String userName = "root";
 	public String userPwd = "";
-	public String database = "trabweb";
+	public String database = "mydb";
 	
 	public Connection getConnection(){
 		Connection conn = null;

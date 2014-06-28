@@ -11,7 +11,7 @@ public class AgenciaDAO {
 	public boolean Add(Agencia a){
 		String SQL;
 		
-		SQL = "INSERT INTO agencia (nome) VALUES ( '"+a.getNome()+"')";
+		SQL = "INSERT INTO agencias (nome) VALUES ( '"+a.getNome()+"')";
 				
 		Connection conn = new Conn().getConnection();
 		
@@ -29,7 +29,7 @@ public class AgenciaDAO {
 	public boolean delete(int id){
 		String SQL;
 		
-		SQL = "DELETE FROM agencia WHERE id = "+Integer.toString(id);
+		SQL = "DELETE FROM agencias WHERE id = "+Integer.toString(id);
 		
 		Connection conn = new Conn().getConnection();
 		
@@ -47,7 +47,7 @@ public class AgenciaDAO {
 	public ArrayList<Agencia> getAll(){
 		String SQL;
 		
-		SQL = "SELECT * FROM agencia";
+		SQL = "SELECT * FROM agencias";
 		
 		Connection conn = new Conn().getConnection();
 		ArrayList<Agencia> la = new ArrayList<Agencia>();
@@ -61,6 +61,31 @@ public class AgenciaDAO {
 				a.setId(rs.getInt("id"));
 				a.setNome(rs.getString("titulo"));
 				la.add(a);
+			}
+			
+			rs.last();
+			
+		} catch(SQLException e){
+			System.out.println("Erro no SQL");
+		}
+		
+		return la;
+	}
+	
+	public ArrayList<String> getAllNome(){
+		String SQL;
+		
+		SQL = "SELECT nome FROM agencias";
+		
+		Connection conn = new Conn().getConnection();
+		ArrayList<String> la = new ArrayList<String>();
+		la.add("");
+		try{
+			Statement stmt = conn.createStatement();
+			ResultSet rs = stmt.executeQuery(SQL);
+			
+			while(rs.next()){
+				la.add(rs.getString("nome"));
 			}
 			
 			rs.last();

@@ -11,7 +11,7 @@ public class ProjetosDAO {
 	public boolean Add(Projetos p){
 		String SQL;
 		
-		SQL = "INSERT INTO projeto (titulo, data_inicio, data_termino, valor_financiado, objetivo, descricao, agencia_id, status)"
+		SQL = "INSERT INTO projetos (titulo, data_inicio, data_termino, valor_financiado, objetivo, descricao, agencia_id, status)"
 				+ "VALUES"
 				+ "('"+p.getTitulo()
 				+"', '"+p.getData_inicio()
@@ -86,6 +86,34 @@ public class ProjetosDAO {
 		
 		return lp;
 	}
+	
+	public ArrayList<String> getAllNome(){
+		String SQL;
+		
+		SQL = "SELECT nome FROM projetos";
+		
+		Connection conn = new Conn().getConnection();
+		ArrayList<String> lp = new ArrayList<String>();
+		lp.add("");
+		
+		try{
+			Statement stmt = conn.createStatement();
+			ResultSet rs = stmt.executeQuery(SQL);
+			
+			while(rs.next()){
+				lp.add(rs.getString("titulo"));
+			}
+			
+			rs.last();
+			
+		} catch(SQLException e){
+			System.out.println("Erro no SQL");
+		}
+		
+		return lp;
+	}
+	
+	
 	
 	public ArrayList<Projetos> getBy(String SQL){
 		

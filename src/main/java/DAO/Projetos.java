@@ -57,7 +57,7 @@ public class Projetos {
 	}
 	
 	public void setObjetivo(String valor){
-		this.data_inicio = valor;
+		this.objetivo = valor;
 	}
 	
 	public String getDescricao(){
