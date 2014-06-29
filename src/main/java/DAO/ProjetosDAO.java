@@ -35,6 +35,34 @@ public class ProjetosDAO {
 		return true;
 	} 
 	
+	public boolean Update(Projetos p){
+		String SQL;
+		
+		SQL = "UPDATE projetos "
+				+ "set "
+				+ "titulo= '"+p.getTitulo()
+				+"', data_inicio= '"+p.getData_inicio()
+				+"', data_termino= '"+p.getData_termino()
+				+"', valor_financiado= "+Float.toString(p.getValor_financiado())
+				+", objetivo= '"+p.getObjetivo()
+				+"', descricao= '"+p.getDescricao()
+				+"', agencia_id="+Integer.toString(p.getAgencia_id())
+				+", status='"+p.getStatus()+"'"
+						+ " where id="+p.getId();
+		
+		Connection conn = new Conn().getConnection();
+		
+		try{
+			Statement stmt = conn.createStatement();
+			stmt.execute(SQL);
+		}catch(SQLException e){
+			System.out.println("Erro no SQL:"+e.getMessage());
+			return false;
+		}
+		
+		return true;
+	}
+	
 	public boolean delete(int id){
 		String SQL;
 		
@@ -52,6 +80,29 @@ public class ProjetosDAO {
 		
 		return true;
 	}
+	
+	public boolean hasPublicacao(int pid){
+		String SQL;
+		
+		SQL = "select count(*) from publicacoes where publicacoes.projeto_id="+pid;
+		
+		Connection conn = new Conn().getConnection();
+		
+		try{
+			Statement stmt = conn.createStatement();
+			ResultSet rs = stmt.executeQuery(SQL);
+			
+			if(rs.getInt("count(*)")<1)
+				return false;
+			
+		}catch(SQLException e){
+			System.out.println("Erro no SQL:"+e.getMessage());
+			return false;
+		}
+		
+		return true;
+	} 
+	
 	
 	public ArrayList<Projetos> getAll(){
 		String SQL;
@@ -167,6 +218,7 @@ public class ProjetosDAO {
 				p.setValor_financiado(rs.getFloat("valor_financiado"));
 				p.setObjetivo(rs.getString("objetivo"));
 				p.setDescricao(rs.getString("descricao"));
+				p.setStatus(rs.getString("status"));
 			}
 			
 			rs.last();

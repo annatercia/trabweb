@@ -117,14 +117,17 @@ public class ColaboradoresDAO {
 			Statement stmt = conn.createStatement();
 			ResultSet rs = stmt.executeQuery(SQL);
 			
-			Colaboradores c = new Colaboradores();
+			Colaboradores c;
 			while(rs.next()){
+				c= new Colaboradores();
 				c.setId(rs.getInt("id"));
 				c.setNome(rs.getString("nome"));
 				c.setGrau(rs.getString("grau"));
+				
 				c.setTipo(rs.getString("tipo"));
 				c.setEmail(rs.getString("email"));
 				lc.add(c);
+				c=null;
 			}
 			
 			rs.last();

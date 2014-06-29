@@ -83,5 +83,22 @@ public class Projetos {
 	public void setStatus(String valor){
 		this.status = valor;
 	}
-
+	
+	public boolean hasTudo(){
+		if(this.titulo.isEmpty())
+			return false;
+		if(this.data_inicio.isEmpty())
+			return false;
+		if(this.data_termino.isEmpty())
+			return false;
+		if(Float.isNaN(this.valor_financiado))
+			return false;
+		if(this.objetivo.isEmpty())
+			return false;
+		if(this.status.isEmpty())
+			return false;
+		if(this.descricao.isEmpty())
+			return false;
+		return true;
+	}
 }
