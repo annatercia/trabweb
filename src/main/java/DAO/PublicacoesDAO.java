@@ -137,6 +137,58 @@ public class PublicacoesDAO {
 		return p;
 	}
 	
+	public void update(Publicacoes p){
+		String SQL = "UPDATE publicacoes SET ";
+		ArrayList<String> fu = new ArrayList<String>();
+		
+		try{
+			if (p.getId() == 0){
+				throw new Exception("Nenhum id definido");
+			}
+		}catch(Exception e){
+			System.out.print("Erro:"+e.getMessage());
+		}
+		
+		if(!p.getTitulo().equals("")){
+			fu.add("titulo='"+p.getTitulo()+"'");
+		}
+		
+		if(!p.getNome_conferencia().equals("")){
+			fu.add("nome_conferencia='"+p.getNome_conferencia()+"'");
+		}
+		
+		if(p.getAno_publicacao() != 0){
+			fu.add("ano_publicacao="+Integer.toString(p.getAno_publicacao()));
+		}
+		
+		if(p.getProjeto_id() != 0){
+			fu.add("projeto_id="+Integer.toString(p.getProjeto_id()));
+		}
+		
+		int i;
+		
+		for(i=0;i<fu.size();i++){
+			SQL += fu.get(i);
+			
+			if(i < fu.size()-1){
+				SQL += ", ";
+			}else{
+				SQL += " ";
+			}
+		}
+		
+		SQL += "WHERE id = "+Integer.toString(p.getId());
+		
+		Connection conn = new Conn().getConnection();
+		
+		try{
+			Statement stmt = conn.createStatement();
+			stmt.execute(SQL);
+		}catch(SQLException e){
+			System.out.println("Erro no SQL");
+		}
+	}
+	
 	
 }
 

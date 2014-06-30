@@ -230,7 +230,73 @@ public class ProjetosDAO {
 		return p;
 	}
 	
-	
+	public void update(Projetos p){
+		String SQL = "UPDATE projetos SET ";
+		ArrayList<String> fu = new ArrayList<String>();
+		
+		try{
+			if (p.getId() == 0){
+				throw new Exception("Nenhum id definido");
+			}
+		}catch(Exception e){
+			System.out.print("Erro:"+e.getMessage());
+		}
+		
+		if(!p.getTitulo().equals("")){
+			fu.add("titulo='"+p.getTitulo()+"'");
+		}
+		
+		if(!p.getData_inicio().equals("")){
+			fu.add("data_inicio='"+p.getData_inicio()+"'");
+		}
+		
+		if(!p.getData_termino().equals("")){
+			fu.add("data_termino='"+p.getData_termino()+"'");
+		}
+		
+		if(!p.getDescricao().equals("")){
+			fu.add("descricao='"+p.getDescricao()+"'");
+		}
+		
+		if(!p.getObjetivo().equals("")){
+			fu.add("objetivo='"+p.getObjetivo()+"'");
+		}
+		
+		if(!p.getStatus().equals("")){
+			fu.add("status='"+p.getStatus()+"'");
+		}
+		
+		if(p.getAgencia_id() != 0){
+			fu.add("agencia_id="+Integer.toString(p.getAgencia_id()));
+		}
+		
+		if(p.getValor_financiado() != 0){
+			fu.add("valor_financiado="+Float.toString(p.getValor_financiado()));
+		}
+		
+		int i;
+		
+		for(i=0;i<fu.size();i++){
+			SQL += fu.get(i);
+			
+			if(i < fu.size()-1){
+				SQL += ", ";
+			}else{
+				SQL += " ";
+			}
+		}
+		
+		SQL += "WHERE id = "+Integer.toString(p.getId());
+		
+		Connection conn = new Conn().getConnection();
+		
+		try{
+			Statement stmt = conn.createStatement();
+			stmt.execute(SQL);
+		}catch(SQLException e){
+			System.out.println("Erro no SQL");
+		}
+	}
 }
 
 

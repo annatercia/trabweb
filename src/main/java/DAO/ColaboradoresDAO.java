@@ -168,6 +168,57 @@ public class ColaboradoresDAO {
 		return c;
 	}
 	
+	public void update(Colaboradores c){
+		String SQL = "UPDATE colaboradores SET ";
+		ArrayList<String> fu = new ArrayList<String>();
+		
+		try{
+			if (c.getId() == 0){
+				throw new Exception("Nenhum id definido");
+			}
+		}catch(Exception e){
+			System.out.print("Erro:"+e.getMessage());
+		}
+		
+		if(!c.getNome().equals("")){
+			fu.add("nome='"+c.getNome()+"'");
+		}
+		
+		if(!c.getEmail().equals("")){
+			fu.add("email='"+c.getEmail()+"'");
+		}
+		
+		if(!c.getGrau().equals("")){
+			fu.add("grau='"+c.getGrau()+"'");
+		}
+		
+		if(!c.getTipo().equals("")){
+			fu.add("tipo='"+c.getTipo()+"'");
+		}
+		
+		int i;
+		
+		for(i=0;i<fu.size();i++){
+			SQL += fu.get(i);
+			
+			if(i < fu.size()-1){
+				SQL += ", ";
+			}else{
+				SQL += " ";
+			}
+		}
+		
+		SQL += "WHERE id = "+Integer.toString(c.getId());
+		
+		Connection conn = new Conn().getConnection();
+		
+		try{
+			Statement stmt = conn.createStatement();
+			stmt.execute(SQL);
+		}catch(SQLException e){
+			System.out.println("Erro no SQL");
+		}
+	}
 	
 }
 

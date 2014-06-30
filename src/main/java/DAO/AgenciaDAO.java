@@ -148,5 +148,44 @@ public class AgenciaDAO {
 		return a;
 	}
 	
+	public void update(Agencia a){
+		String SQL = "UPDATE agencia SET ";
+		ArrayList<String> fu = new ArrayList<String>();
+		
+		try{
+			if (a.getId() == 0){
+				throw new Exception("Nenhum id definido");
+			}
+		}catch(Exception e){
+			System.out.print("Erro:"+e.getMessage());
+		}
+		
+		if(!a.getNome().equals("")){
+			fu.add("nome='"+a.getNome()+"'");
+		}
+		
+		int i;
+		
+		for(i=0;i<fu.size();i++){
+			SQL += fu.get(i);
+			
+			if(i < fu.size()-1){
+				SQL += ", ";
+			}else{
+				SQL += " ";
+			}
+		}
+		
+		SQL += "WHERE id = "+Integer.toString(a.getId());
+		
+		Connection conn = new Conn().getConnection();
+		
+		try{
+			Statement stmt = conn.createStatement();
+			stmt.execute(SQL);
+		}catch(SQLException e){
+			System.out.println("Erro no SQL");
+		}
+	}
 	
 }

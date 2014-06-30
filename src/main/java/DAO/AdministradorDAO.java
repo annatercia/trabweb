@@ -130,5 +130,49 @@ public class AdministradorDAO {
 		return a;
 	}
 	
+	public void update(Administrador a){
+		String SQL = "UPDATE administrador SET ";
+		ArrayList<String> fu = new ArrayList<String>();
+		
+		try{
+			if (a.getIdadministrador() == 0){
+				throw new Exception("Nenhum id definido");
+			}
+		}catch(Exception e){
+			System.out.print("Erro:"+e.getMessage());
+		}
+		
+		if(!a.getLogin().equals("")){
+			fu.add("login='"+a.getLogin()+"'");
+		}
+		
+		if(!a.getSenha().equals("")){
+			fu.add("senha='"+a.getSenha()+"'");
+		}
+		
+		int i;
+		
+		for(i=0;i<fu.size();i++){
+			SQL += fu.get(i);
+			
+			if(i < fu.size()-1){
+				SQL += ", ";
+			}else{
+				SQL += " ";
+			}
+		}
+		
+		SQL += "WHERE idadministrador = "+Integer.toString(a.getIdadministrador());
+		
+		Connection conn = new Conn().getConnection();
+		
+		try{
+			Statement stmt = conn.createStatement();
+			stmt.execute(SQL);
+		}catch(SQLException e){
+			System.out.println("Erro no SQL");
+		}
+	}
+	
 	
 }

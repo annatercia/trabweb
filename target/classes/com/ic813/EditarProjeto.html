@@ -16,29 +16,31 @@
 		<div id="bd">
 			<!-- Escolher o projeto que deseja editar -->
 			<form wicket:id="selprojeto">
-				<label wicket:id="selecione"></label><br/><select wicket:id="sel"><br/>
+				<b><label wicket:id="selecione"></label></b><br/><select wicket:id="sel"><br/>
 															<option value="">Escolha</option>
 															</select><br/>
 				<input type="submit" value="Escolher">											
 			</form>
 			
 			<!-- Informações daquele projeto -->
-			<label wicket:id="titulo"></label><br/><span wicket:id="tit" size="40" maxlength="100">-</span><br/>
-			<label wicket:id="dataini"></label><br/><span wicket:id="dtini" size="15" maxlength="15">-</span><br/>
-			<label wicket:id="datafim"></label><br/><span wicket:id="dtfim" size="15" maxlength="15">-</span><br/>
-			<label wicket:id="agencia"></label><br/><span wicket:id="agn" size="15" maxlength="15">-</span><br/>
-			<label wicket:id="valor"></label><br/><span wicket:id="vlr" size="40" maxlength="100" >-</span><br/>
-			<label wicket:id="objetivo"></label><br/><span wicket:id="objt" size="40" maxlength="100">-</span><br/>
-			<label wicket:id="descricao"></label><br/><span wicket:id="desc" size="40" maxlength="100">-</span><br/>
+			<b><span wicket:id="titulo"></span></b><br/><span wicket:id="tit" size="40" maxlength="100">-</span><br/>
+			<b><span wicket:id="dataini"></span></b><br/><span wicket:id="dtini" size="15" maxlength="15">-</span><br/>
+			<b><span wicket:id="datafim"></span></b><br/><span wicket:id="dtfim" size="15" maxlength="15">-</span><br/>
+			<b><span wicket:id="agencia"></span></b><br/><span wicket:id="agn" size="15" maxlength="15">-</span><br/>
+			<b><span wicket:id="valor"></span></b><br/><span wicket:id="vlr" size="40" maxlength="100" >-</span><br/>
+			<b><span wicket:id="objetivo"></span></b><br/><span wicket:id="objt" size="40" maxlength="100">-</span><br/>
+			<b><span wicket:id="descricao"></span></b><br/><span wicket:id="desc" size="40" maxlength="100">-</span><br/>
+			<b><span wicket:id="status"></span></b><br/><span wicket:id="stts" size="40" maxlength="100">-</span><br/>
 		
 			
 			<!-- Tabela de colaboradores daquele projeto -->
-			<table>
+			<b>Colaboradores</b>
+			<table border>
 				<tr>
-					<td>Nome</td>
-					<td>Grau</td>
-					<td>Tipo</td>
-					<td>E-mail</td>
+					<td><b>Nome</b></td>
+					<td><b>Grau</b></td>
+					<td><b>Tipo</b></td>
+					<td><b>E-mail</b></td>
 				</tr>
 				<tr wicket:id="lista">
 					<td><span wicket:id="nome">-</span></td>
@@ -49,15 +51,15 @@
 			</table>
 			
 			<!-- Formulário de alocação de fulanos -->
-			<form wicked:id="alocar">								
-				<label wicket:id="colaborador"></label><br/><select wicket:id="col" >
+			<form wicket:id="alocar">								
+				<b><label wicket:id="colaborador"></label></b><br/><select wicket:id="col" >
 														<option value="">Escolha um fulano</option>
 														</select><br/>
 				<input type="submit" value="Escolher">
 			</form>
 			
 			<!--  Outro requisito -->
-			<a href="#">Alterar status</a>
+			<a href="#" wicket:id="alterar">Alterar status</a>
 		</div>
 		<div id="ft">
 		</div>
