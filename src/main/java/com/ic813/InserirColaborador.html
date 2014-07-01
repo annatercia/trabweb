@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:wicket="http://wicket.apache.org">
+	<head>
+		<meta charset="utf-8" />
+		<title>Inserir Colaborador</title>
+		<!-- <link href='http://fonts.googleapis.com/css?family=Yanone+Kaffeesatz:regular,bold' rel='stylesheet' type='text/css' /> -->
+		<link rel="stylesheet" href="style.css" type="text/css" media="screen" title="Stylesheet" />
+	</head>
+	<body>
+		<div id="hd">
+			<div id="logo">
+				<!--<img src="logo.png" width="50px" height="50px" alt="Wicket Logo" />
+				--><h1>Inserir Colaborador</h1>
+			</div>
+		</div>
+		<div id="bd">
+			<form wicket:id="inserirColaborador">
+				<label wicket:id="nome"></label><br/><input type="text" wicket:id="nmcol" size="40" maxlength="100" placeholder="Nome do Colaborador: "><br/>
+				<label wicket:id="grau"></label><br/><input type="text" wicket:id="graucol" size="40" maxlength="100" placeholder="Grau: "><br/>
+				<label wicket:id="tipo"></label><br/><input type="text" wicket:id="tipocol" size="40" maxlength="100" placeholder="Tipo: "><br/>
+				<label wicket:id="email"></label><br/><input type="text" wicket:id="emlcol" size="40" maxlength="100" placeholder="E-mail: "><br/>
+				<input type="submit" value="Enviar">
+			</form>
+			<p>
+				
+			</p>
+		</div>
+		<div id="ft">
+		</div>
+	</body>
+</html>
