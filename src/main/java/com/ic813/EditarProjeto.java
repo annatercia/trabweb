@@ -42,7 +42,7 @@ public class EditarProjeto extends WebPage {
 	 //LISTA DE COLABORADORES DE UM PROJETO X ESCOLHIDO NO PRIMEIRO FORM.
 	 private List<Colaboradores> colaboradores = new ArrayList<Colaboradores>();
 
-	 
+	 //***********ENTREGA DIA 18!!!***********
 	 //NÃO TEM NENHUMA MENSAGEM DE ERRO, TODAS AS "MENSAGENS" ESTÃO NOS SYSTEM.OUT.PRINTLN()
 	 //PORQUE (EU FIQUEI COM PREGUIÇA) A GENTE PODE DEIXAR PRA IMPLEMENTAR ISSO PRA ENTREGA FINAL
 	public EditarProjeto(final PageParameters parameters) {
@@ -119,7 +119,7 @@ public class EditarProjeto extends WebPage {
 					 * ALGUM PROFESSOR PARTICIPANDO
 					 */
 					if(ptdao.hasProfessor(p.getId())){
-						//
+						
 						if(p.hasTudo()){
 							p.setStatus("em andamento");
 							if(pdao.Update(p))
