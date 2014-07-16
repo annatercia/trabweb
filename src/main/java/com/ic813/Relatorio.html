@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns:wicket="http://wicket.apache.org">
+	<head>
+		<meta charset="utf-8" />
+		<title>Relatorio do sistema</title>
+		<!-- <link href='http://fonts.googleapis.com/css?family=Yanone+Kaffeesatz:regular,bold' rel='stylesheet' type='text/css' /> -->
+		<link rel="stylesheet" href="style.css" type="text/css" media="screen" title="Stylesheet" />
+	</head>
+	<body>
+		<div id="hd">
+			<div id="logo">
+				<!--<img src="logo.png" width="50px" height="50px" alt="Wicket Logo" />
+				--><h1>Relat&ocaute;rio do sistema</h1>
+			</div>
+		</div>
+		<div id="bd">
+			<table>
+				<thead>
+					<tr>
+						<td colspan="2">Relat&ocaute;rio:</td>
+					</tr>
+				</thead>
+				<tr>
+					<td>N&uacute;mero de colaboradores:</td>
+					<td><label wicket:id="n-colab"></label></td>
+				</tr>
+				<tr>
+					<td>Projetos em elabora&ccedil;&atilde;o:</td>
+					<td><label wicket:id="projs-elab"></label></td>
+				</tr>
+				<tr>
+					<td>Projetos em andamento:</td>
+					<td><label wicket:id="proj-and"></label></td>
+				</tr>
+				<tr>
+					<td>Projetos Conclu&iacute;dos:</td>
+					<td><label wicket:id="proj-concl"></label></td>
+				</tr>
+				<tr>
+					<td>Projetos Totais:</td>
+					<td><label wicket:id="proj-total"></label></td>
+				</tr>
+				<tr>
+					<td>Produ&ccedil;&otilde;es Acad&ecirc;micas:</td>
+					<td><label wicket:id="prod-acad"></label></td>
+				</tr>
+			</table>			
+			<p>
+				
+			</p>
+		</div>
+		<div id="ft">
+		</div>
+	</body>
+</html>
