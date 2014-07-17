@@ -22,7 +22,7 @@ public class BarraMenu extends WebPage{
 			@Override
 			public void onClick(){ //mais fácil que tirar doce de criança.
 				
-				setResponsePage(CriarProjeto.class);
+				setResponsePage(HomePage.class);
 			}
 		 });
 		
@@ -47,6 +47,13 @@ public class BarraMenu extends WebPage{
 			public void onClick(){ //mais fácil que lustrar a careca do andré.
 				
 				setResponsePage(InserirColaborador.class);
+			}
+		 });
+		add(new Link("relatorios"){
+			@Override
+			public void onClick(){ //mais fácil que lustrar a careca do andré.
+				
+				setResponsePage(Relatorio.class);
 			}
 		 });
 		
