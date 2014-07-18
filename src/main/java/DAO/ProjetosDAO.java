@@ -114,25 +114,30 @@ public class ProjetosDAO {
 
 		try{
 			Statement stmt = conn.createStatement();
+			
 			ResultSet rs = stmt.executeQuery(SQL);
-
+			
 			Projetos p = new Projetos();
+			
 			while(rs.next()){
+				
 				p.setId(rs.getInt("id"));
 				p.setTitulo(rs.getString("titulo"));
 				p.setData_inicio(rs.getString("data_inicio"));
 				p.setData_termino(rs.getString("data_termino"));
-				p.setAgencia_id(rs.getInt("agencia"));
+				//POG \/
+				//p.setAgencia_id(rs.getInt("agencia"));
 				p.setValor_financiado(rs.getFloat("valor_financiado"));
 				p.setObjetivo(rs.getString("objetivo"));
 				p.setDescricao(rs.getString("descricao"));
+				
 				lp.add(p);
 			}
-
+			
 			rs.last();
 
 		} catch(SQLException e){
-			System.out.println("Erro no SQL");
+			System.out.println("Erro no SQL 1: "+SQL);
 		}
 
 		return lp;
@@ -150,7 +155,7 @@ public class ProjetosDAO {
 		try{
 			Statement stmt = conn.createStatement();
 			ResultSet rs = stmt.executeQuery(SQL);
-
+			
 			while(rs.next()){
 				lp.add(rs.getString("titulo"));
 			}
@@ -169,11 +174,11 @@ public class ProjetosDAO {
 
 		Connection conn = new Conn().getConnection();
 		ArrayList<String> lp = new ArrayList<String>();
-
+		lp.add("");
 		try{
 			Statement stmt = conn.createStatement();
 			ResultSet rs = stmt.executeQuery(SQL);
-
+			rs.next();
 			Projetos p = new Projetos();
 			while(rs.next()){
 				p.setTitulo(rs.getString("titulo"));
@@ -201,11 +206,13 @@ public class ProjetosDAO {
 
 			Projetos p = new Projetos();
 			while(rs.next()){
+				System.out.println("Projeto: "+rs.getInt("id"));
 				p.setId(rs.getInt("id"));
 				p.setTitulo(rs.getString("titulo"));
 				p.setData_inicio(rs.getString("data_inicio"));
 				p.setData_termino(rs.getString("data_termino"));
-				p.setAgencia_id(rs.getInt("agencia"));
+				//POG \/
+				//p.setAgencia_id(rs.getInt("agencia"));
 				p.setValor_financiado(rs.getFloat("valor_financiado"));
 				p.setObjetivo(rs.getString("objetivo"));
 				p.setDescricao(rs.getString("descricao"));
@@ -215,7 +222,7 @@ public class ProjetosDAO {
 			rs.last();
 
 		} catch(SQLException e){
-			System.out.println("Erro no SQL");
+			System.out.println("Erro no SQL 2: "+SQL);
 		}
 
 		return lp;

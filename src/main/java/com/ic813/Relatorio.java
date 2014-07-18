@@ -27,21 +27,21 @@ public class Relatorio extends WebPage {
 		
 		//Número de projetos em Elaboração:
 		ProjetosDAO proj = new ProjetosDAO();
-		/*TODO: Mudar string do status, verificar conformidade com DODO*/
-		ArrayList<Projetos> projetos = proj.getBy("SELECT * FROM projetos WHERE status = 'elaboracao'");
+		/*TODO: Mudar string do status. Já tá.*/
+		ArrayList<Projetos> projetos = proj.getBy("SELECT * FROM projetos WHERE status = 'em elaboração'");
 		int nproj_e = projetos.size();
 		
 		//Número de projetos em andamento
-		projetos = proj.getBy("SELECT * FROM projetos WHERE status = 'andamento'");
-		int nproj_a = projetos.size();
+		ArrayList<Projetos> projetos0 = proj.getBy("SELECT * FROM projetos WHERE status = 'em andamento'");
+		int nproj_a = projetos0.size();
 		
 		//Número de projetos concluidos
-		projetos = proj.getBy("SELECT * FROM projetos WHERE status = 'concluido'");
-		int nproj_c = projetos.size();
+		ArrayList<Projetos> projetos1 = proj.getBy("SELECT * FROM projetos WHERE status = 'concluído'");
+		int nproj_c = projetos1.size();
 		
 		//Número de projetos total
-		projetos = proj.getAll();
-		int nproj_t = projetos.size();
+		ArrayList<Projetos> projetos2 = proj.getAll();
+		int nproj_t = projetos2.size();
 		
 		
 		//Número de produções academicas
