@@ -22,7 +22,7 @@ public class Publicacao extends Form{
 	private TextField<String> ano_publicacao;
 	private DropDownChoice<String> projeto;
 	private DAO.ProjetosDAO p = new ProjetosDAO();
-	private List<String> lp = p.tituloGetBy("SELECT * proejto WHERE status = 'Em Andamento'");
+	private List<String> lp = p.tituloGetBy("SELECT * proejto WHERE status = 'em andamento'");
 	
 	public Publicacao(String id){
 		super(id);

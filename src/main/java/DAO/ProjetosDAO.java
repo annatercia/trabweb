@@ -165,6 +165,30 @@ public class ProjetosDAO {
 	}
 
 
+	public ArrayList<String> tituloGetBy(String SQL){
+
+		Connection conn = new Conn().getConnection();
+		ArrayList<String> lp = new ArrayList<String>();
+
+		try{
+			Statement stmt = conn.createStatement();
+			ResultSet rs = stmt.executeQuery(SQL);
+
+			Projetos p = new Projetos();
+			while(rs.next()){
+				p.setTitulo(rs.getString("titulo"));
+				lp.add(p.getTitulo());
+			}
+
+			rs.last();
+
+		} catch(SQLException e){
+			System.out.println("Erro no SQL");
+		}
+
+		return lp;
+	}
+
 
 	public ArrayList<Projetos> getBy(String SQL){
 
