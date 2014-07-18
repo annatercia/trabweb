@@ -41,6 +41,7 @@ public class EditarProjeto extends WebPage {
 	 private Participacao pt;
 	 //LISTA DE COLABORADORES DE UM PROJETO X ESCOLHIDO NO PRIMEIRO FORM.
 	 private List<Colaboradores> colaboradores = new ArrayList<Colaboradores>();
+	 private String mensagem;
 
 	 //***********ENTREGA DIA 18!!!***********
 	 //NÃO TEM NENHUMA MENSAGEM DE ERRO, TODAS AS "MENSAGENS" ESTÃO NOS SYSTEM.OUT.PRINTLN()
@@ -51,6 +52,7 @@ public class EditarProjeto extends WebPage {
 		//QUANDO ESCOLHE UM PROJETO NO 1º FORM OU UM COLABORADOR NO 2º FORM
 		//OS PARÂMETROS SÃO PASSADOS NA URL, POR ISSO VERIFICAMOS SE PARAMETERS NÃO ESTÁ VAZIO
 		if(!parameters.isEmpty()){
+			
 			escolhido=Integer.parseInt(parameters.get("selprojeto").toString());
 			p = new Projetos();
 			p = pdao.getByIdl(escolhido);
@@ -64,19 +66,25 @@ public class EditarProjeto extends WebPage {
 		
 		   	//ESSE PARÂMETRO É USADO SÓ NO 2º FORM (ALOCAÇÃO)
 		 if(parameters.get("selcolaborador").toString()!=""){
+			 
 			 //UM ALUNO DE GRADUAÇÃO NÃO PODE PARTICIPAR DE 2 PROJETOS 'EM ANDAMENTO'
 			 //VERIFICAMOS NA FUNÇÃO hasOther SE ELE JÁ POSSUI OUTRO PROJETO COM ESSE STATUS
 			 if(!ptdao.hasOther(Integer.parseInt(parameters.get("selcolaborador").toString()))){
 				 pt = new Participacao();
 				 pt.setColaborador_id(Integer.parseInt(parameters.get("selcolaborador").toString()));
 				 pt.setProjeto_id(p.getId());
-				 if (ptdao.Add(pt))
+				 if (ptdao.Add(pt)){
 					 System.out.print("Fulano alocado");
-				 else
+					 mensagem ="Fulano alocado";
+				 }
+				 else{
 					 System.out.print("Falha na alocacao");
+					 mensagem= "Fulano não alocado";
+				 }
 			 }
 			 else{
 				 System.out.print("Um aluno de graduação não pode ser alocado em dois projetos.");
+				 mensagem="Um aluno de graduação não pode ser alocado em dois projetos.";
 			 }
 		 }
 		}
@@ -122,18 +130,24 @@ public class EditarProjeto extends WebPage {
 						
 						if(p.hasTudo()){
 							p.setStatus("em andamento");
-							if(pdao.Update(p))
+							if(pdao.Update(p)){
 								System.out.println("Atualizado");
-							else
+								mensagem= "Atualizado";
+							}
+							else{
 								System.out.println("Nao atualizado");
+								mensagem="Não atualizado";
+							}
 						}
 						else{
 							System.out.println("Alguma informação está faltando nesse projeto.");
+							mensagem="Alguma informação está faltando nesse projeto.";
 						}
 						
 					}
 					else{
 						System.out.println("Deve haver ao menos um professor.");
+						mensagem="Deve haver ao menos um professor.";
 					}
 				}
 				//SE STATUS == 'EM ANDAMENTO' ALTERAMOS O STATUS PARA 'CONCLUIDO'
@@ -142,13 +156,18 @@ public class EditarProjeto extends WebPage {
 					//a função hasPublicacao() verifica isso pra gente
 					if(pdao.hasPublicacao(p.getId())){
 						p.setStatus("concluido");
-						if(pdao.Update(p))
+						if(pdao.Update(p)){
 							System.out.println("Atualizado");
-						else
+							mensagem= "Atualizado";
+						}
+						else{
 							System.out.println("Nao atualizado");
+							mensagem="Não atualizado";
+						}
 					}
 					else{
 						System.out.println("Nao tem publicações");
+						mensagem="Não tem publicações";
 					}
 				}
 				else{
@@ -201,7 +220,9 @@ public class EditarProjeto extends WebPage {
 			 add(new Label("objt","-"));
 			 add(new Label("desc","-"));
 			 add(new Label("stts","-"));
+			 
 		 }
+		 add(new Label("erro", mensagem));
 		 
 		 //colaboradores
 		 if(!parameters.isEmpty()){
