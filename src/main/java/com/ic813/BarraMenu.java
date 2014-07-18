@@ -57,6 +57,14 @@ public class BarraMenu extends WebPage{
 			}
 		 });
 		
+		add(new Link("consColaborador"){
+			@Override
+			public void onClick(){ //mais fácil que lustrar a careca do andré.
+				
+				setResponsePage(Consulta_Col.class);
+			}
+		 });
+		
 		//você não leu os comentários acima.
 		
 	}
