@@ -32,7 +32,7 @@ public class ParticipacaoDAO {
 	public boolean hasProfessor(int pid){
 		String SQL;
 
-		SQL = "select count(*) from participacao, colaboradores"
+		SQL = "select count(*) c from participacao, colaboradores"
 				+ " where participacao.colaborador_id=colaboradores.id"
 				+ " and colaboradores.tipo='professor'"
 				+ " and participacao.projeto_id="+pid;
@@ -44,7 +44,7 @@ public class ParticipacaoDAO {
 			ResultSet rs = stmt.executeQuery(SQL);
 			rs.next();
 
-			if(rs.getInt("count(*)")<1)
+			if(rs.getInt("c")<1)
 				return false;
 
 		}catch(SQLException e){
@@ -58,7 +58,7 @@ public class ParticipacaoDAO {
 	public boolean hasOther(int cid){
 		String SQL;
 
-		SQL = "SELECT count( * ) FROM participacao, projetos, colaboradores "
+		SQL = "SELECT count( * ) c FROM participacao, projetos, colaboradores "
 				+ "WHERE participacao.projeto_id = projetos.id "
 				+ "AND colaboradores.tipo = 'aluno' "
 				+ "AND colaboradores.grau = 'graduação' "
@@ -71,7 +71,7 @@ public class ParticipacaoDAO {
 			Statement stmt = conn.createStatement();
 			ResultSet rs = stmt.executeQuery(SQL);
             rs.next();
-			if(rs.getInt("count(*)")>1)
+			if(rs.getInt("c")>1)
 				return true;
 
 		}catch(SQLException e){
